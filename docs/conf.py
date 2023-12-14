@@ -121,9 +121,6 @@ html_theme = "sidebaronly"
 html_title = project
 
 html_theme_options = {
-    "external_links": [
-        {"name": "COMPAS Framework", "url": "https://compas.dev"},
-    ],
     "icon_links": [
         {
             "name": "GitHub",
