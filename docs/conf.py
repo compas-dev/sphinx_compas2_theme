@@ -10,7 +10,6 @@ copyright = "COMPAS Association"
 author = "Tom Van Mele"
 organization = "compas-dev"
 package = "sphinx_compas2_theme"
-release = "0.1.0"
 
 master_doc = "index"
 source_suffix = {".rst": "restructuredtext", ".md": "markdown"}
