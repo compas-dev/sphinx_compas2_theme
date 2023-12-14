@@ -1,7 +1,6 @@
-# COMPAS 2 Theme for Sphinx
+# Sphinx Theme for COMPAS 2
 
-COMPAS 2 Theme for Sphinx
-
+This is a Sphinx theme for COMPAS 2 based on ``pydata-sphinx-theme`` and ``sphinx-book-theme``.
 
 ## Getting started with this project
 
@@ -11,25 +10,22 @@ COMPAS 2 Theme for Sphinx
 2. Select python environment for the project
 3. First time using VS Code and on Windows? Make sure select the correct terminal profile: `Ctrl+Shift+P`, `Terminal: Select Default Profile` and select `Command Prompt`.
 
-> All terminal commands in the following sections can be run from the VS Code integrated terminal. 
-
+> All terminal commands in the following sections can be run from the VS Code integrated terminal.
 
 ### First steps with git
 
 1. Go to the `Source control` tab
 2. Make an initial commit with all newly created files
 
-
 ### First steps with code
 
-1. Install the newly created project 
+1. Install the newly created project
 
         pip install -e .
 
 2. Install it on Rhino
 
         python -m compas_rhino.install
-
 
 ### Code conventions
 
@@ -42,7 +38,6 @@ Code convention follows [PEP8](https://pep8.org/) style guidelines and line leng
 2. Format code automatically
 
         invoke format
-
 
 ### Documentation
 
@@ -58,7 +53,6 @@ Documentation is generated automatically out of docstrings and [RST](https://www
 
 3. Open docs in your browser (file explorer -> `dist/docs/index.html`)
 
-
 ### Testing
 
 Tests are written using the [pytest](https://docs.pytest.org/) framework
@@ -68,20 +62,6 @@ Tests are written using the [pytest](https://docs.pytest.org/) framework
         invoke test
 
 2. Or run them from VS Code from the `Testing` tab
-
-
-### Developing Grasshopper components
-
-We use [Grasshopper Componentizer](https://github.com/compas-dev/compas-actions.ghpython_components) to develop Python components that can be stored and edited on git.
-
-1. Build components
-
-        invoke build-ghuser-components
-
-2. Install components on Rhino
-
-        python -m compas_rhino.install
-
 
 ### Publish release
 

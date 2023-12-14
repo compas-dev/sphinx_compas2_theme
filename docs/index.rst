@@ -1,23 +1,19 @@
 :html_theme.sidebar_secondary.remove: true
 ********************************************************************************
-sphinx_compas2_theme
+Sphinx Theme for COMPAS 2
 ********************************************************************************
-
-.. rst-class:: lead
-
-COMPAS 2 Theme for Sphinx
 
 Table of Contents
 =================
 
 .. toctree::
-   :maxdepth: 3
-   :titlesonly:
+    :maxdepth: 3
+    :titlesonly:
 
-   Introduction <self>
-   installation
-   tutorial
-   license
+    Introduction <self>
+    installation
+    tutorial
+    license
 
 
 Indices and tables

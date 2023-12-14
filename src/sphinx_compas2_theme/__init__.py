@@ -22,7 +22,6 @@ default_exclude_patterns = [
     "**/__old",
 ]
 
-
 default_extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
@@ -44,7 +43,6 @@ default_extensions = [
     "matplotlib.sphinxext.plot_directive",
     "numpydoc",
 ]
-
 
 default_mock_imports = [
     "System",
