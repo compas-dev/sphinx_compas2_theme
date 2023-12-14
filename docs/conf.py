@@ -15,8 +15,8 @@ package = "sphinx_compas2_theme"
 master_doc = "index"
 source_suffix = {".rst": "restructuredtext", ".md": "markdown"}
 templates_path = sphinx_compas2_theme.get_autosummary_templates_path()
-exclude_patterns = sphinx_compas2_theme.default_exclude_patterns + ["reference/**"]
-add_module_names = True
+exclude_patterns = sphinx_compas2_theme.default_exclude_patterns
+add_module_names = False
 language = "en"
 
 latest_version = sphinx_compas2_theme.get_latest_version()

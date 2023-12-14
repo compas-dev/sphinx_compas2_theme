@@ -33,7 +33,6 @@ default_extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.coverage",
     "sphinx.ext.autodoc.typehints",
-    "sphinx.ext.viewcode",
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx_favicon",
