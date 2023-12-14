@@ -141,13 +141,33 @@ def skip(app, what, name, obj, would_skip, options):
     return would_skip
 
 
+def replace(Klass):
+    old_call = Klass.visit_reference
+
+    def visit_reference(self, node):
+        if "refuri" in node:
+            refuri = node.get("refuri")
+            if "generated" in refuri:
+                href_anchor = refuri.split("#")
+                if len(href_anchor) > 1:
+                    href = href_anchor[0]
+                    anchor = href_anchor[1]
+                    page = href.split("/")[-1]
+                    parts = page.split(".")
+                    if parts[-1] == "html":
+                        pagename = ".".join(parts[:-1])
+                        if anchor == pagename:
+                            node["refuri"] = href
+        return old_call(self, node)
+
+    Klass.visit_reference = visit_reference
+
+
 def setup(app):
     theme_path = get_html_theme_path()[0]
 
     app.add_html_theme("multisection", str(theme_path / "multisection"))
     app.add_html_theme("sidebaronly", str(theme_path / "sidebaronly"))
-
-    app.connect("autodoc-skip-member", skip)
 
 
 sys.path.append(get_extensions_path())
