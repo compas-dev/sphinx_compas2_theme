@@ -11,7 +11,7 @@ __author__ = ["tom van mele"]
 __copyright__ = "COMPAS Association"
 __license__ = "MIT License"
 __email__ = "tom.v.mele@gmail.com"
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 
 default_exclude_patterns = [
