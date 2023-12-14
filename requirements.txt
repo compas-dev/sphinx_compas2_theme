@@ -1,0 +1,16 @@
+jinja2 >= 3.0
+numpydoc
+pydata-sphinx-theme
+pydocstyle
+pytest
+pytest-mock
+sphinx ==4.5
+sphinx_book_theme
+sphinx-design
+sphinx-inline-tabs
+sphinx-togglebutton
+sphinx-remove-toctrees
+sphinx-copybutton
+sphinxcontrib-bibtex
+sphinxcontrib-youtube
+sphinx-favicon
