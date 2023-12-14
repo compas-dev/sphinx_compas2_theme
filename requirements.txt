@@ -1,16 +1,16 @@
 jinja2 >= 3.0
 numpydoc
-pydata-sphinx-theme
+pydata-sphinx-theme >=0.13, <0.14
 pydocstyle
 pytest
 pytest-mock
 sphinx ==4.5
 sphinx_book_theme
-sphinx-design
-sphinx-inline-tabs
-sphinx-togglebutton
-sphinx-remove-toctrees
 sphinx-copybutton
+sphinx-design
+sphinx-favicon
+sphinx-inline-tabs
+sphinx-remove-toctrees
+sphinx-togglebutton
 sphinxcontrib-bibtex
 sphinxcontrib-youtube
-sphinx-favicon
