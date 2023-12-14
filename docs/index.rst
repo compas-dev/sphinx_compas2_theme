@@ -1,3 +1,4 @@
+:html_theme.sidebar_secondary.remove: true
 ********************************************************************************
 sphinx_compas2_theme
 ********************************************************************************
@@ -5,11 +6,6 @@ sphinx_compas2_theme
 .. rst-class:: lead
 
 COMPAS 2 Theme for Sphinx
-
-.. .. figure:: /_images/
-     :figclass: figure
-     :class: figure-img img-fluid
-
 
 Table of Contents
 =================
@@ -21,8 +17,6 @@ Table of Contents
    Introduction <self>
    installation
    tutorial
-   examples
-   api
    license
 
 
