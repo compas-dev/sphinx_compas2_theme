@@ -135,11 +135,19 @@ def get_html_static_path():
     return [static_path]
 
 
+def skip(app, what, name, obj, would_skip, options):
+    if name.startswith("_"):
+        return True
+    return would_skip
+
+
 def setup(app):
     theme_path = get_html_theme_path()[0]
 
     app.add_html_theme("multisection", str(theme_path / "multisection"))
     app.add_html_theme("sidebaronly", str(theme_path / "sidebaronly"))
+
+    app.connect("autodoc-skip-member", skip)
 
 
 sys.path.append(get_extensions_path())

@@ -10,7 +10,14 @@ copyright = "COMPAS Association"
 author = "Tom Van Mele"
 organization = "compas-dev"
 package = "sphinx_compas2_theme"
+release = "0.1.0"
 
+master_doc = "index"
+source_suffix = {".rst": "restructuredtext", ".md": "markdown"}
+templates_path = sphinx_compas2_theme.get_autosummary_templates_path()
+exclude_patterns = sphinx_compas2_theme.default_exclude_patterns + ["reference/**"]
+add_module_names = True
+language = "en"
 
 latest_version = sphinx_compas2_theme.get_latest_version()
 
@@ -21,22 +28,11 @@ else:
     release = latest_version
     version = ".".join(release.split(".")[0:2])  # type: ignore
 
-master_doc = "index"
-source_suffix = {
-    ".rst": "restructuredtext",
-    ".md": "markdown",
-}
-templates_path = sphinx_compas2_theme.get_autosummary_templates_path()
-exclude_patterns = sphinx_compas2_theme.default_exclude_patterns + ["reference/**"]
-
-add_module_names = True
-language = "en"
-
 # -- Extension configuration ------------------------------------------------
 
 extensions = sphinx_compas2_theme.default_extensions
 
-# remove_from_toctrees = ["api/generated/*"]
+# numpydoc options
 
 numpydoc_show_class_members = False
 numpydoc_class_members_toctree = False
@@ -44,15 +40,10 @@ numpydoc_attributes_as_param_list = True
 
 # bibtex options
 
-# bibtex_bibfiles = ['refs.bib']
-
 # autodoc options
 
 autodoc_type_aliases = {}
 
-# this does not work properly yet
-# autodoc_typehints = "none"
-# autodoc_typehints_format = "short"
 autodoc_typehints_description_target = "documented"
 
 autodoc_mock_imports = sphinx_compas2_theme.default_mock_imports
@@ -65,17 +56,6 @@ autodoc_default_options = {
 autodoc_member_order = "groupwise"
 
 autoclass_content = "class"
-
-
-def skip(app, what, name, obj, would_skip, options):
-    if name.startswith("_"):
-        return True
-    return would_skip
-
-
-def setup(app):
-    app.connect("autodoc-skip-member", skip)
-
 
 # autosummary options
 
