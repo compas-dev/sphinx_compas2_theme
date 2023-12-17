@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Changed `linkcode_resolve` to point to the exact git revision.
+
 ### Removed
 
 
