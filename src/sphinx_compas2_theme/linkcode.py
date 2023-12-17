@@ -52,7 +52,7 @@ def _get_git_revision():
     return revision.decode("utf-8")
 
 
-def _linkcode_resolve(domain, info, package, url_fmt, revision):
+def _linkcode_resolve(domain, info, package, organization, url_fmt, revision):
     """Determine a link to online source for a class/method/function
 
     This is called by sphinx.ext.linkcode
@@ -61,7 +61,8 @@ def _linkcode_resolve(domain, info, package, url_fmt, revision):
     >>> _linkcode_resolve('py', {'module': 'tty',
     ...                          'fullname': 'setraw'},
     ...                   package='tty',
-    ...                   url_fmt='http://hg.python.org/cpython/file/'
+    ...                   organization='cpython',
+    ...                   url_fmt='http://hg.python.org/{organization}/file/'
     ...                           '{revision}/Lib/{package}/{path}#L{lineno}',
     ...                   revision='xxxx')
     'http://hg.python.org/cpython/file/xxxx/Lib/tty/tty.py#L18'
@@ -99,19 +100,19 @@ def _linkcode_resolve(domain, info, package, url_fmt, revision):
         lineno = inspect.getsourcelines(obj)[1]
     except Exception:
         lineno = ""
-    return url_fmt.format(revision=revision, package=package, path=fn, lineno=lineno)
+    return url_fmt.format(revision=revision, package=package, organization=organization, path=fn, lineno=lineno)
 
 
-def make_linkcode_resolve(package, url_fmt):
+def make_linkcode_resolve(package, organization, url_fmt):
     """Returns a linkcode_resolve function for the given URL format
 
     revision is a git commit reference (hash or name)
 
     package is the name of the root module of the package
 
-    url_fmt is along the lines of ('https://github.com/USER/PROJECT/'
+    url_fmt is along the lines of ('https://github.com/{organization}/PROJECT/'
                                    'blob/{revision}/{package}/'
                                    '{path}#L{lineno}')
     """
     revision = _get_git_revision()
-    return partial(_linkcode_resolve, revision=revision, package=package, url_fmt=url_fmt)
+    return partial(_linkcode_resolve, revision=revision, package=package, organization=organization, url_fmt=url_fmt)

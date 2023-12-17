@@ -3,6 +3,7 @@ from __future__ import print_function
 from pathlib import Path
 import sys
 import re
+from sphinx_compas2_theme.linkcode import make_linkcode_resolve
 
 __author__ = ["tom van mele"]
 __copyright__ = "COMPAS Association"
@@ -52,6 +53,14 @@ default_mock_imports = [
     "bmesh",
     "mathutils",
 ]
+
+
+def get_linkcode_resolve(
+    organization,
+    package,
+    url_fmt="https://github.com/{organization}/{package}/blob/{revision}/src/{package}/{path}#L{lineno}",
+):
+    return make_linkcode_resolve(package, organization, url_fmt)
 
 
 def get_latest_version():
