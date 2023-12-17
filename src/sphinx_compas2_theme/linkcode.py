@@ -65,7 +65,7 @@ def _linkcode_resolve(domain, info, package, organization, url_fmt, revision):
     ...                   url_fmt="https://github.com/{organization}/{package}/blob/"
     ...                           "{revision}/src/{package}/{path}#L{lineno}",
     ...                   revision="1663ec7")
-    "https://github.com/compas-dev/compas/blob/1663ec7/src/compas/colors/color.py#L28"
+    'https://github.com/compas-dev/compas/blob/1663ec7/src/compas/colors/color.py#L28'
     """
 
     if revision is None:
