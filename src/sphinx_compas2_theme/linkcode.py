@@ -58,14 +58,13 @@ def _linkcode_resolve(domain, info, package, organization, url_fmt, revision):
     This is called by sphinx.ext.linkcode
 
     An example with a long-untouched module that everyone has
-    >>> _linkcode_resolve('py', {'module': 'tty',
-    ...                          'fullname': 'setraw'},
-    ...                   package='tty',
-    ...                   organization='cpython',
-    ...                   url_fmt='http://hg.python.org/{organization}/file/'
-    ...                           '{revision}/Lib/{package}/{path}#L{lineno}',
-    ...                   revision='xxxx')
-    'http://hg.python.org/cpython/file/xxxx/Lib/tty/tty.py#L18'
+    >>> _linkcode_resolve("py", {"module": "compas.colors",
+    ...                          "fullname": "Color"},
+    ...                   package="compas",
+    ...                   organization="compas-dev",
+    ...                   url_fmt="https://github.com/{organization}/{package}/blob/{revision}/src/{package}/{path}#L{lineno}",
+    ...                   revision="1663ec7")
+    "https://github.com/compas-dev/compas/blob/1663ec7/src/compas/colors/color.py#L28"
     """
 
     if revision is None:
