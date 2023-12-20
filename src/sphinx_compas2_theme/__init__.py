@@ -39,7 +39,6 @@ default_extensions = [
     "sphinx_inline_tabs",
     "sphinx_remove_toctrees",
     "sphinx_togglebutton",
-    "matplotlib.sphinxext.plot_directive",
     "numpydoc",
 ]
 
