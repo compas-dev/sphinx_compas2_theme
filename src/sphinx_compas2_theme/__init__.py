@@ -1,11 +1,9 @@
 from __future__ import print_function
 
 from pathlib import Path
-import importlib
-import inspect
 import sys
 import re
-
+from sphinx_compas2_theme.linkcode import make_linkcode_resolve
 
 __author__ = ["tom van mele"]
 __copyright__ = "COMPAS Association"
@@ -56,47 +54,12 @@ default_mock_imports = [
 ]
 
 
-def get_linkcode_resolve(organization, repo):
-    def linkcode_resolve(domain, info):
-        if domain != "py":
-            return None
-        if not info["module"]:
-            return None
-        if not info["fullname"]:
-            return None
-
-        package = info["module"].split(".")[0]
-        if not package.startswith(repo):
-            return None
-
-        module = importlib.import_module(info["module"])
-        parts = info["fullname"].split(".")
-
-        if len(parts) == 1:
-            obj = getattr(module, info["fullname"])
-            mod = inspect.getmodule(obj)
-            if not mod:
-                return None
-            filename = mod.__name__.replace(".", "/")
-            lineno = inspect.getsourcelines(obj)[1]
-        elif len(parts) == 2:
-            obj_name, attr_name = parts
-            obj = getattr(module, obj_name)
-            attr = getattr(obj, attr_name)
-            if inspect.isfunction(attr):
-                mod = inspect.getmodule(attr)
-                if not mod:
-                    return None
-                filename = mod.__name__.replace(".", "/")
-                lineno = inspect.getsourcelines(attr)[1]
-            else:
-                return None
-        else:
-            return None
-
-        return f"https://github.com/{organization}/{repo}/blob/main/src/{filename}.py#L{lineno}"
-
-    return linkcode_resolve
+def get_linkcode_resolve(
+    organization,
+    package,
+    url_fmt="https://github.com/{organization}/{package}/blob/{revision}/src/{package}/{path}#L{lineno}",
+):
+    return make_linkcode_resolve(package, organization, url_fmt)
 
 
 def get_latest_version():
