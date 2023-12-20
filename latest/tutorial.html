@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
     <link rel="icon" href="_static/compas.ico" type="image/x-icon">
     <title>Tutorial &#8212; Sphinx Theme for COMPAS 2</title>
   
@@ -34,7 +34,6 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,9 +41,8 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/tabs.js"></script>
@@ -282,6 +280,10 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </nav>
@@ -483,6 +485,56 @@ document.write(`
                   
   <section id="tutorial">
 <h1>Tutorial</h1>
+<section id="basic-structure">
+<h2>Basic Structure</h2>
+<section id="sidebaronly">
+<h3>sidebaronly</h3>
+</section>
+<section id="multisection">
+<h3>multisection</h3>
+</section>
+</section>
+<section id="add-a-custom-autosummary-template">
+<h2>Add a Custom <code class="docutils literal notranslate"><span class="pre">autosummary</span></code> Template</h2>
+<p>In the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file, add the path to your local templates folder.
+The path should be relative to the <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">templates_path</span> <span class="o">=</span> <span class="n">sphinx_compas2_theme</span><span class="o">.</span><span class="n">get_autosummary_templates_path</span><span class="p">()</span>
+<span class="n">templates_path</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">_templates</span></code> folder, add as many custom <code class="docutils literal notranslate"><span class="pre">autosummary</span></code> templates as you want.
+The name of the file is the name of the template.</p>
+<p>For example, to add a custom template for the <code class="docutils literal notranslate"><span class="pre">autosummary</span></code> of a <code class="docutils literal notranslate"><span class="pre">class</span></code> object that excludes inherited methods,
+add <code class="docutils literal notranslate"><span class="pre">class_noinheritance.rst</span></code>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>{{ objname | escape | underline }}
+
+<span class="p">..</span> <span class="ow">currentmodule</span><span class="p">::</span> {{ module }}
+
+<span class="p">..</span> <span class="ow">autoclass</span><span class="p">::</span> {{ objname }}
+
+    {% block methods %}
+<span class="p">    ..</span> <span class="ow">rubric</span><span class="p">::</span> Methods
+
+<span class="p">    ..</span> <span class="ow">autosummary</span><span class="p">::</span>
+        <span class="nc">:toctree:</span>
+        <span class="nc">:nosignatures:</span>
+    {% for item in methods %}
+    {% if item not in inherited_members %}
+        ~{{ name }}.{{ item }}
+    {% endif %}
+    {%- endfor %}
+
+    {% endblock %}
+</pre></div>
+</div>
+<p>Finally, tell <code class="docutils literal notranslate"><span class="pre">autosummary</span></code> to use the custom template.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">autosummary</span><span class="p">::</span>
+    <span class="nc">:toctree:</span> generated/
+    <span class="nc">:nosignatures:</span>
+    <span class="nc">:template:</span> class_noinheritance.rst
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -497,6 +549,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-structure">Basic Structure</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sidebaronly">sidebaronly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multisection">multisection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-custom-autosummary-template">Add a Custom <code class="docutils literal notranslate"><span class="pre">autosummary</span></code> Template</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -528,7 +599,7 @@ document.write(`
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     <br/>
   </p>
 </div>
