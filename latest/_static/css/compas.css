@@ -20,7 +20,7 @@ body {
 
 /* default is 60em */
 .bd-main .bd-content .bd-article-container {
-    max-width: 100%;
+    max-width: 60rem;
 }
 .bd-main.no-sidebars .bd-content .bd-article-container {
     max-width: 60rem;
@@ -30,6 +30,17 @@ body {
 /* default is 88rem */
 .bd-page-width {
     max-width: 1920px;
+}
+
+/*
+Ideally max-width would only be applied to the content of the sidebar
+and the sidebar itself would be 25% of the page width.
+The content then should be aligned to the right.
+*/
+
+.bd-sidebar-primary {
+    width: 25%;
+    max-width: 22rem; /* 360px ish */
 }
 
 .bd-header {
