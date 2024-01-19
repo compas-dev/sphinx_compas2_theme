@@ -20,7 +20,7 @@ body {
 
 /* default is 60em */
 .bd-main .bd-content .bd-article-container {
-    max-width: 60rem;
+    max-width: 100%;
 }
 .bd-main.no-sidebars .bd-content .bd-article-container {
     max-width: 60rem;
