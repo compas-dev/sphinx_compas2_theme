@@ -25,7 +25,7 @@ optional_requirements = {}
 
 setup(
     name="sphinx-compas2-theme",
-    version="0.1.9",
+    version="0.1.10",
     description="COMPAS 2 Theme for Sphinx",
     long_description=long_description,
     long_description_content_type="text/markdown",
